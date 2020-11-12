@@ -1,0 +1,32 @@
+[req]
+default_bits = 2048
+prompt = no
+default_md = sha256
+x509_extensions = v3_req
+distinguished_name = dn
+attributes = req_attributes
+req_extensions = v3_ca
+
+[dn]
+C = US
+ST = KS
+L = Olathe
+O = IT
+OU = IT Department
+emailAddress = webmaster@example.com
+CN = localhost
+
+[req_attributes]
+challengePassword = admin
+
+[v3_req]
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1 = *.localhost
+DNS.2 = localhost
+
+[v3_ca]
+subjectKeyIdentifier=hash
+authorityKeyIdentifier=keyid:always,issuer:always
+basicConstraints = critical, CA:true
